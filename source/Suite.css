@@ -1,6 +1,10 @@
 .slmc-suite {
-	color: #0000CC;
-	background: url(../assets/bg.png);
+  color: #0000CC;
+  background: url(../assets/bg.png);
+}
+.slmc-suite-top {
+  color: #0000CC;
+  background: url(../assets/logo_lms124_10.gif);
 }
 .list-sample-contacts-list {
 	color: #0000CC;
@@ -8,7 +12,7 @@
 /* item */
 .list-sample-contacts-item {
 	color: white;
-	height: 80px;
+	height: 75px;
 	border-top: 1px solid silver;
 	padding: 12px 16px;
 	/* background-color: #333333; */
