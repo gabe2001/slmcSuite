@@ -1,3 +1,4 @@
 enyo.depends(
-	"Users"
+	"Users",
+	"Event"
 );

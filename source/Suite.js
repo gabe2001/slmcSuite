@@ -19,7 +19,7 @@ enyo.kind({
 	classes: "slmc-suite enyo-fit",
 	components: [
 	    {kind: "onyx.MoreToolbar", classes: "slmc-suite", components: [
-	        {content: "slmc Suite"}
+	        {content: "slm.c Suite"}
 	    ]},
 	    {kind: "List", classes: "list-sample-contacts-list enyo-unselectable", fit: true, multiSelect: false,
 			onSetupItem: "setupItem", onSelect: "selectApp", components: [

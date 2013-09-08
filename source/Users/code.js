@@ -4,7 +4,7 @@ enyo.kind({
 	classes: "list-sample-contacts enyo-fit",
 	components: [
 	    {kind: "onyx.MoreToolbar", classes: "list-sample-contacts-list", components: [
-	        {content: "slmc Suite"},
+	        {content: "slm.c Suite"},
 	        {fit: true},
 	        {content: "Users"}
 	    ]},

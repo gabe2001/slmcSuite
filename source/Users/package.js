@@ -1,4 +1,4 @@
 enyo.depends(
-	"ListContacts.css",
-	"ListContacts.js"
+	"style.css",
+	"code.js"
 );
