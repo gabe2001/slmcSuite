@@ -22,7 +22,8 @@ enyo.kind({
 	classes: "slmc-suite enyo-fit",
 	components: [
 	    {kind: "onyx.MoreToolbar", classes: "slmc-suite", components: [
-	        {kind: "Image", src: "assets/logo_lms124_32.png"}
+	        {content: "slm.c Suite"}
+	        // {kind: "Image", src: "assets/logo_lms124_32.png"}
 	    ]},
 	    {kind: "List", classes: "list-sample-contacts-list enyo-unselectable", fit: true, multiSelect: false,
 			onSetupItem: "setupItem", onSelect: "selectApp", components: [
