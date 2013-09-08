@@ -1,4 +1,6 @@
 enyo.depends(
 	"Users",
-	"Event"
+	"Event",
+	"Suite.css",
+	"Suite.js"
 );
