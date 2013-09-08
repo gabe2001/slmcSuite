@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<widget xmlns = "http://www.w3.org/ns/widgets"
+  xmlns:gap = "http://phonegap.com/ns/1.0"
+  id        = "com.gabe2001.slmc.suite"
+  versionCode="1" 
+  version   = "1.0.0">
+   
+  <name>slmc Users</name>
+  
+  <description>
+    slmc users app 
+  </description>
+  
+  <author href="http://www.slotracinglemans.com" email="gabe.inabnit@gmail.com">
+    gabe 
+  </author>
+  
+  <preference name="fullscreen" value="false" />
+  
+</widget>
