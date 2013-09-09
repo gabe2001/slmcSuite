@@ -14,7 +14,9 @@
   <author href="http://www.slotracinglemans.com" email="gabe.inabnit@gmail.com">
     gabe 
   </author>
-  
+
+  <uses-permission android:name="android.permission.INTERNET" />
+
   <preference name="fullscreen" value="false" />
   
 </widget>
