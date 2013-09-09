@@ -15,7 +15,7 @@
     gabe 
   </author>
 
-  <feature android:name="android.permission.INTERNET" />
+  <feature name="android.permission.INTERNET" />
 
   <preference name="fullscreen" value="false" />
   
