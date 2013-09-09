@@ -1,10 +1,13 @@
 /**
-_enyo.TouchScrollStrategy_, a helper kind for implementing a touch-based
-scroller, integrates the scrolling simulation provided by
-<a href="#enyo.ScrollMath">enyo.ScrollMath</a> into an
-<a href="#enyo.Scroller">enyo.Scroller</a>.
+	_enyo.TouchScrollStrategy_ is a helper kind for implementing a touch-based
+	scroller. It integrates the scrolling simulation provided by
+	<a href="#enyo.ScrollMath">enyo.ScrollMath</a> into an
+	<a href="#enyo.Scroller">enyo.Scroller</a>.
 
-_enyo.TouchScrollStrategy_ is not typically created in application code.
+	_enyo.TouchScrollStrategy_ is not typically created in application code.
+	Instead, it is specified as the value of the `strategyKind` property of an
+	`enyo.Scroller` or <a href="#enyo.List">enyo.List</a>, or is used by the
+	framework implicitly.
 */
 enyo.kind({
 	name: "enyo.TouchScrollStrategy",
@@ -21,7 +24,7 @@ enyo.kind({
 	published: {
 		/**
 			Specifies how to vertically scroll.  Acceptable values are:
-			
+
 			* "scroll": Always scroll.
 			* "auto": Scroll only if the content overflows the scroller.
 			* "hidden": Never scroll.
@@ -46,7 +49,9 @@ enyo.kind({
 			can help improve performance of complex, large scroll regions on
 			some platforms (e.g., Android).
 		*/
-		scrim: false
+		scrim: false,
+		//*	Allow drag events sent when gesture events are happening simultaneously
+		dragDuringGesture: true
 	},
 	events: {
 		onShouldDrag: ""
@@ -69,8 +74,10 @@ enyo.kind({
 	],
 	scrimTools: [{name: "scrim", classes: "enyo-fit", style: "z-index: 1;", showing: false}],
 	components: [
-		{name: "client", attributes: {"onscroll": enyo.bubbler}, classes: "enyo-touch-scroller"}
+		{name: "client", classes: "enyo-touch-scroller"}
 	],
+	// flag telling us whether the list is currently reordering
+	listReordering: false,
 	create: function() {
 		this.inherited(arguments);
 		this.transform = enyo.dom.canTransform();
@@ -101,6 +108,7 @@ enyo.kind({
 	},
 	rendered: function() {
 		this.inherited(arguments);
+		enyo.makeBubble(this.$.client, "scroll");
 		this.calcBoundaries();
 		this.syncScrollMath();
 		if (this.thumb) {
@@ -130,11 +138,13 @@ enyo.kind({
 	},
 	//* Whether or not the scroller is actively moving
 	isScrolling: function() {
-		return this.$.scrollMath.isScrolling();
+		var m = this.$.scrollMath;
+		return m ? m.isScrolling() : this.scrolling;
 	},
 	//* Whether or not the scroller is in overscrolling
 	isOverscrolling: function() {
-		return (this.overscroll) ? this.$.scrollMath.isInOverScroll() : false;
+		var m = this.$.scrollMath || this;
+		return (this.overscroll) ? m.isInOverScroll() : false;
 	},
 	domScroll: function() {
 		if (!this.isScrolling()) {
@@ -167,12 +177,14 @@ enyo.kind({
 		}
 	},
 	stabilize: function() {
-		this.$.scrollMath.stabilize();
+		if(this.$.scrollMath) {
+			this.$.scrollMath.stabilize();
+		}
 	},
 	//* Scrolls to specific x/y positions within the scroll area.
 	scrollTo: function(inX, inY) {
 		this.stop();
-		this.$.scrollMath.scrollTo(inY || inY === 0 ? inY : null, inX);
+		this.$.scrollMath.scrollTo(inX, inY || inY === 0 ? inY : null);
 	},
 	scrollIntoView: function() {
 		this.stop();
@@ -239,7 +251,8 @@ enyo.kind({
 	},
 	hold: function(inSender, e) {
 		if (this.isScrolling() && !this.isOverscrolling()) {
-			this.$.scrollMath.stop(e);
+			var m = this.$.scrollMath || this;
+			m.stop(e);
 			return true;
 		}
 	},
@@ -247,13 +260,17 @@ enyo.kind({
 	},
 	// Special synthetic DOM events served up by the Gesture system
 	dragstart: function(inSender, inEvent) {
+		// Ignore drags sent from multi-touch events
+		if(!this.dragDuringGesture && inEvent.srcEvent.touches && inEvent.srcEvent.touches.length > 1) {
+			return true;
+		}
 		// note: allow drags to propagate to parent scrollers via data returned in the shouldDrag event.
 		this.doShouldDrag(inEvent);
 		this.dragging = (inEvent.dragger == this || (!inEvent.dragger && inEvent.boundaryDragger == this));
 		if (this.dragging) {
 			inEvent.preventDefault();
 			// note: needed because show/hide changes
-			// the position so sync'ing is required when 
+			// the position so sync'ing is required when
 			// dragging begins (needed because show/hide does not trigger onscroll)
 			this.syncScrollMath();
 			this.$.scrollMath.startDrag(inEvent);
@@ -263,6 +280,10 @@ enyo.kind({
 		}
 	},
 	drag: function(inSender, inEvent) {
+		// if the list is doing a reorder, don't scroll
+		if(this.listReordering) {
+			return false;
+		}
 		if (this.dragging) {
 			inEvent.preventDefault();
 			this.$.scrollMath.drag(inEvent);
@@ -285,6 +306,7 @@ enyo.kind({
 		if (!this.dragging) {
 			this.calcBoundaries();
 			this.syncScrollMath();
+			this.stabilize();
 			if (this.$.scrollMath.mousewheel(e)) {
 				e.preventDefault();
 				return true;
@@ -318,14 +340,16 @@ enyo.kind({
 		}
 	},
 	calcBoundaries: function() {
-		var s = this.$.scrollMath, b = this._getScrollBounds();
+		var s = this.$.scrollMath || this, b = this._getScrollBounds();
 		s.bottomBoundary = b.clientHeight - b.height;
 		s.rightBoundary = b.clientWidth - b.width;
 	},
 	syncScrollMath: function() {
 		var m = this.$.scrollMath;
-		m.setScrollX(-this.getScrollLeft());
-		m.setScrollY(-this.getScrollTop());
+		if(m) {
+			m.setScrollX(-this.getScrollLeft());
+			m.setScrollY(-this.getScrollTop());
+		}
 	},
 	effectScroll: function(inX, inY) {
 		if (this.scrollNode) {
@@ -355,7 +379,7 @@ enyo.kind({
 	},
 	//* Returns the values of _overleft_ and _overtop_, if any.
 	getOverScrollBounds: function() {
-		var m = this.$.scrollMath;
+		var m = this.$.scrollMath || this;
 		return {
 			overleft: Math.min(m.leftBoundary - m.x, 0) || Math.max(m.rightBoundary - m.x, 0),
 			overtop: Math.min(m.topBoundary - m.y, 0) || Math.max(m.bottomBoundary - m.y, 0)
@@ -387,8 +411,10 @@ enyo.kind({
 	//* Syncs and shows both the vertical and horizontal scroll indicators.
 	showThumbs: function() {
 		this.syncThumbs();
-		this.$.vthumb.show();
-		this.$.hthumb.show();
+		if (this.horizontal != "hidden")
+			this.$.hthumb.show();
+		if (this.vertical != "hidden")
+			this.$.vthumb.show();
 	},
 	//* Hides the vertical and horizontal scroll indicators.
 	hideThumbs: function() {

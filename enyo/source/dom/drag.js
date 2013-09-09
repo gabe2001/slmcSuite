@@ -5,36 +5,20 @@
 
 	The following events are provided:
 
-	* "dragstart" and "dragfinish" are sent for pointer moves that exceed a
-		certain threshhold.
+	* "dragstart"
+	* "dragfinish"
+	* "drag"
+	* "drop"
+	* "dragover"
+	* "dragout"
+	* "hold"
+	* "release"
+	* "holdpulse"
+	* "flick"
 
-	* "drag" and "drop" are sent to the original target of the pointer move, to
-		provide information about the item being moved over (or released over)
-		another element.
-
-	* "dragover" and "dragout" are sent in addition to "over" and "out" while
-		there is an active drag.
-
-	* "hold" is generated when the pointer is held down without moving for a
-		short period of time (about 200ms).
-
-	* "release" is generated when the pointer is released after being held down,
-		or is moved off of the node while still held down, but before any potential dragstart event.  
-		The target is the same as that of the "hold" event.
-
-	* "holdpulse" is generated when the pointer is held down without moving for
-		a short period of time; it repeats periodically about once every 200ms.
-		Use	this event to trigger an action after a given period of time.  The
-		elapsed time is available in the _holdTime_ property.
-
-	* "flick" is generated when the user flicks the pointer quickly.  This event
-		provides flick velocity data through the properties _xVelocity_
-		(velocity with respect to the horizontal axis) and _yVelocity_ (velocity
-		with respect to the vertical axis).
-
-	Note: On the Android platform, the "touchmove" event must be prevented via
-	_inEvent.preventDefault()_, or the Enyo dragging system will not function
-	correctly.
+	For more information on these events, see the documentation on
+	[User Input](https://github.com/enyojs/enyo/wiki/User-Input) in the Enyo
+	Developer Guide.
 */
 
 //* @protected
@@ -57,7 +41,7 @@ enyo.gesture.drag = {
 	minTrack: 8,
 	down: function(e) {
 		// tracking if the mouse is down
-		//console.log("tracking ON");
+		//enyo.log("tracking ON");
 		// Note: 'tracking' flag indicates interest in mousemove, it's turned off
 		// on mouseup
 		// make sure to stop dragging in case the up event was not received.
@@ -76,7 +60,7 @@ enyo.gesture.drag = {
 				this.stopDragging(e);
 				this.cancelHold();
 				this.tracking = false;
-				//console.log("enyo.gesture.drag: mouse must be down to drag.");
+				//enyo.log("enyo.gesture.drag: mouse must be down to drag.");
 				return;
 			}
 			if (this.dragEvent) {
@@ -143,12 +127,12 @@ enyo.gesture.drag = {
 		return e;
 	},
 	sendDragStart: function(e) {
-		//console.log("dragstart");
+		//enyo.log("dragstart");
 		this.dragEvent = this.makeDragEvent("dragstart", this.target, e);
 		enyo.dispatch(this.dragEvent);
 	},
 	sendDrag: function(e) {
-		//console.log("sendDrag to " + this.dragEvent.target.id + ", over to " + e.target.id);
+		//enyo.log("sendDrag to " + this.dragEvent.target.id + ", over to " + e.target.id);
 		// send dragOver event to the standard event target
 		var synth = this.makeDragEvent("dragover", e.target, e, this.dragEvent.dragInfo);
 		enyo.dispatch(synth);
@@ -158,10 +142,12 @@ enyo.gesture.drag = {
 		enyo.dispatch(synth);
 	},
 	sendDragFinish: function(e) {
-		//console.log("dragfinish");
+		//enyo.log("dragfinish");
 		var synth = this.makeDragEvent("dragfinish", this.dragEvent.target, e, this.dragEvent.dragInfo);
 		synth.preventTap = function() {
-			e.preventTap && e.preventTap();
+			if (e.preventTap) {
+				e.preventTap();
+			}
 		};
 		enyo.dispatch(synth);
 	},
@@ -172,7 +158,9 @@ enyo.gesture.drag = {
 	sendDrop: function(e) {
 		var synth = this.makeDragEvent("drop", e.target, e, this.dragEvent.dragInfo);
 		synth.preventTap = function() {
-			e.preventTap && e.preventTap();
+			if (e.preventTap) {
+				e.preventTap();
+			}
 		};
 		enyo.dispatch(synth);
 	},
@@ -194,8 +182,8 @@ enyo.gesture.drag = {
 		//
 		var ti = this.flickInfo;
 		ti.moves.push({
-			x: e.clientX, 
-			y: e.clientY, 
+			x: e.clientX,
+			y: e.clientY,
 			t: enyo.now()
 		});
 		// track specified # of points
@@ -208,12 +196,12 @@ enyo.gesture.drag = {
 		var ti = this.flickInfo;
 		var moves = ti && ti.moves;
 		if (moves && moves.length > 1) {
-			// note: important to use up time to reduce flick 
+			// note: important to use up time to reduce flick
 			// velocity based on time between move and up.
 			var l = moves[moves.length-1];
 			var n = enyo.now();
 			// take the greatest of flick between each tracked move and last move
-			for (var i=moves.length-2, dt=0, x1=0, y1=0, x=0, y=0, sx=0, sy=0, m; m=moves[i]; i--) {
+			for (var i=moves.length-2, dt=0, x1=0, y1=0, x=0, y=0, sx=0, sy=0, m; (m=moves[i]); i--) {
 				// this flick (this move - last move) / (this time - last time)
 				dt = n - m.t;
 				x1 = (l.x - m.x) / dt;

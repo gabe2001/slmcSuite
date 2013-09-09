@@ -1,0 +1,9 @@
+enyo.depends(
+	"$lib/layout",
+	"$lib/onyx",
+	"slmc.css",
+	"slmc.js",
+	"Event.js",
+	"Users.js",
+	"Home.js"
+);
