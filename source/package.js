@@ -5,5 +5,7 @@ enyo.depends(
 	"slmc.js",
 	"Event.js",
 	"Users.js",
-	"Home.js"
+	"Home.js",
+	"config.js",
+	"util.js"
 );
