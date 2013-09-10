@@ -15,6 +15,8 @@
     gabe 
   </author>
 
+  <icon src="icon.png" />
+  
   <feature name="android.permission.INTERNET" />
 
   <preference name="fullscreen" value="false" />
