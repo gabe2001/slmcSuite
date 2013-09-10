@@ -4,16 +4,28 @@
 
 var menuItemData = [
 	{
-		label: "Home"
+		label: "Home",
+		content: [
+			{kind: "slmc.Suite.Home"}
+		]
 	},
 	{
-		label: "Event"
+		label: "Event",
+		content: [
+			{kind: "slmc.Suite.Event"}
+		]
 	},
 	{
-		label: "Users"
+		label: "Users",
+		content: [
+			{kind: "slmc.Suite.Users"}
+		]
 	},
 	{
-		label: "Forum"
+		label: "Forum",
+		content: [
+			{content: "slmc.Suite.Forum"}
+		]
 	}
 ];
 

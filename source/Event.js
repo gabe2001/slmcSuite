@@ -7,7 +7,7 @@ enyo.kind({
 				{name: "item", kind: "ContactItem", classes: "list-sample-contacts-item enyo-border-box", onRemove: "removeTap"}
 			]},
 		{kind: "onyx.MoreToolbar", classes: "list-sample-contacts-list", layoutKind: "FittableColumnsLayout", style: "height: 55px;", components: [
-				{content: "2013 NL Scaleauto #4 Results"},
+				{content: "2013 NL SA #4"},
 				{fit: true},
 				{kind: "onyx.IconButton", src: "assets/menu-icon-refresh.png", ontap: "populateList"}
 			]}
