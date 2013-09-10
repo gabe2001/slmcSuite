@@ -3,22 +3,30 @@
   xmlns:gap = "http://phonegap.com/ns/1.0"
   id        = "com.gabe2001.slmc.suite"
   versionCode="1" 
-  version   = "1.0.0">
+  version   = "0.0.1">
    
   <name>slm.c Suite</name>
   
   <description>
-    slmc apps suite 
+    slm.c apps suite 
   </description>
   
   <author href="http://www.slotracinglemans.com" email="gabe.inabnit@gmail.com">
-    gabe 
+    gabe
   </author>
 
-  <icon src="icon.png" />
-  
   <feature name="android.permission.INTERNET" />
 
   <preference name="fullscreen" value="false" />
+  <preference name="show-splash-screen-spinner" value="true" />
+  <preference name="auto-hide-splash-screen" value="true" />
+  <preference name="android-minSdkVersion" value="7" />
+  <preference name="android-installLocation" value="auto" />
+
+  <icon src="icon.png" />
   
+  <gap:splash gap:platform="android" gap:density="ldpi" src="resources/splash.png" />
+  <gap:splash gap:platform="ios" width="320" height="480" src="resources/splash.png" />
+  
+
 </widget>
