@@ -24,7 +24,8 @@
   <preference name="android-installLocation" value="auto" />
 
   <icon src="icon.png" />
-  
+  <icon gap:platform="webos" src="resources/icon-64.png" />
+    
   <gap:splash gap:platform="android" gap:density="ldpi" src="resources/splash.png" />
   <gap:splash gap:platform="ios" width="320" height="480" src="resources/splash.png" />
   
