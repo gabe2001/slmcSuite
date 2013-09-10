@@ -12,22 +12,21 @@ enyo.kind({
 	kind: "enyo.FittableColumns",
 	menuLoaded: false,
 	components:[
-		{kind: "onyx.Drawer", name: "menuDrawer", open: false, orient: "h", components: [
+		{kind: "onyx.Drawer", name: "menuDrawer", open: false, orient: "h", animated: false, components: [
 				{kind: "enyo.FittableRows", fit: true, style: "width: 120px; background: #CCDDFF;", components: [
 						{kind: "onyx.Toolbar", style: "height: 55px;", ontap: "toggleMenu", components: [
 								{kind: "enyo.Control", content: "slm.c", style: "color: #CCDDFF;"}
 							]},
-						{kind: "enyo.Control", name: "menuItems", ontap: "showPanel"}
+						{kind: "enyo.Control", name: "menuItems", ontap: "showPanel", fit:true}
 					]}
 			]},
-		{kind: "enyo.FittableRows", fit: true,
-			style: "background: url(assets/bg.png);", components: [
+		{kind: "enyo.FittableRows", fit: true, style: "background: url(assets/bg.png);", components: [
 				{kind: "onyx.Toolbar", style: "background: transparent; height: 55px; border-style: hidden;", components: [
 						{kind: "onyx.IconButton", src: "assets/grabbutton.png", ontap: "toggleMenu", ondragstart: "toggleMenu"},
 						{kind: "enyo.Image", src: "assets/logo_lms124_32.png"}
 					]},
 				{kind: "enyo.Panels", name: "mainView", arrangerKind: "CardArranger", style: "", fit: true, components: [
-						{kind: "slmc.Suite.Home"},
+						{content: "slmc.Suite.Home"},
 						{kind: "slmc.Suite.Event"},
 						{kind: "slmc.Suite.Users"},
 						{content: "forum page"}
@@ -68,6 +67,7 @@ enyo.kind({
 enyo.kind({
 	name: "slmc.MenuItem",
 	count: 0,
+	style: "height: 36px;",
 	published: {
 		index: 0
 	},
@@ -77,5 +77,8 @@ enyo.kind({
 	],
 	create: function() {
 		this.inherited(arguments);
+	},
+	showPanel: function(inSender, inEvent) {
+		// TODO - Auto-generated code
 	}
 });
