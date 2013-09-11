@@ -28,7 +28,7 @@
     
   <gap:splash gap:platform="android" gap:density="ldpi" src="resources/splash.png" />
   <gap:splash gap:platform="android" gap:density="hdpi" src="resources/splash_480x800.png" />
-  <gap:splash gap:platform="ios" width="320" height="480" src="resources/splash.png" />
+  <gap:splash gap:platform="ios" width="320" height="480" src="resources/splash_iphone4.png" />
   <gap:splash gap:platform="ios" width="320" height="568" src="resources/splash_iphone5.png" />
   
 
