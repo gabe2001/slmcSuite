@@ -20,7 +20,7 @@ enyo.kind({
 						{kind: "onyx.IconButton", src: "assets/grabbutton.png", ontap: "toggleMenu", ondragstart: "toggleMenu"},
 						{kind: "enyo.Image", src: "assets/logo_lms124_32.png"}
 					]},
-				{kind: "enyo.Panels", name: "mainView", arrangerKind: "CardArranger", fit: true, draggable: true}
+				{kind: "enyo.Panels", name: "mainView", arrangerKind: "CardArranger", fit: true, draggable: false}
 			]}
 	],
 	rendered: function() {
