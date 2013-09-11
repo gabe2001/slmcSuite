@@ -68,10 +68,9 @@ enyo.kind({
 	populateList: function() {
 		this.clearFilter();
 		var req = new enyo.JsonpRequest({
-			url: "http://www.slotracinglemans.com/newforum/jsonUsers.php",
-			callbackName: "callback"
+			url: "http://www.slotracinglemans.com/newforum/slmc.php"
 		});
-		req.go();
+		req.go({action: "users"});
 		req.response(this, "populateDb");
 	},
 	populateDb: function(inRequest, inResponse) {
