@@ -28,11 +28,11 @@ enyo.kind({
 		req.response(this, "loadContent");
 	},
 	loadContent: function(inSender, inEvent) {
-		enyo.log("loadContent", inEvent);
+		// enyo.log("loadContent", inEvent);
 		if (inEvent && inEvent.length > 0) {
 			this.$.title.setContent(inEvent[0].title);
-			this.$.intro.setContent(inEvent[0].intro.replace('\\', ''));
-			this.$.article.setContent(inEvent[0].content.replace('\\', ''));
+			this.$.intro.setContent(inEvent[0].intro);
+			this.$.article.setContent(inEvent[0].content);
 		}
 	}
 });
