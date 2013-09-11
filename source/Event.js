@@ -8,6 +8,8 @@ enyo.kind({
 			]},
 		{kind: "onyx.MoreToolbar", classes: "list-sample-contacts-list", layoutKind: "FittableColumnsLayout", style: "height: 55px;", components: [
 				{content: "2013 NL SA #4"},
+				{kind: "Button", content: "F", ontap: "sortDbByName"},
+				{kind: "Button", content: "C", ontap: "sortDbByEmail"},
 				{fit: true},
 				{kind: "onyx.IconButton", src: "assets/menu-icon-refresh.png", ontap: "populateList"}
 			]}
@@ -96,5 +98,21 @@ enyo.kind({
 			else if (a.name > b.name) return 1;
 			else return 0;
 		});
+	},
+	sortDbByName: function() {
+		this.db.sort(function(a, b) {
+			if (a.name < b.name) return -1;
+			else if (a.name > b.name) return 1;
+			else return 0;
+		});
+		this.redrawList();
+	},
+	sortDbByEmail: function() {
+		this.db.sort(function(a, b) {
+			if (a.email < b.email) return -1;
+			else if (a.email > b.email) return 1;
+			else return 0;
+		});
+		this.redrawList();
 	}
 });
