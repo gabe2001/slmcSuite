@@ -22,7 +22,7 @@ var menuItemData = [
 		]
 	},
 	{
-		label: "CarsDB",
+		label: "Cars DB",
 		content: [
 			{content: "slmc.Suite.CarsDB"}
 		]
