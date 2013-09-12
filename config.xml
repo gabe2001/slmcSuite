@@ -3,7 +3,7 @@
   xmlns:gap = "http://phonegap.com/ns/1.0"
   id        = "com.gabe2001.slmc.suite"
   versionCode="1" 
-  version   = "0.0.1">
+  version   = "0.0.111">
    
   <name>slm.c Suite</name>
   
