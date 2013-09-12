@@ -7,6 +7,7 @@ enyo.kind({
 	kind: "enyo.FittableColumns",
 	menuLoaded: false,
 	components:[
+		{kind: "enyo.Signals", onmenubutton: "toggleMenu"},
 		{kind: "onyx.Drawer", name: "menuDrawer", open: false, orient: "h", animated: false, style: "background: grey", components: [
 				{kind: "enyo.FittableRows", fit: true, style: "width: 150px;", components: [
 						{kind: "onyx.Toolbar", ontap: "toggleMenu", style: "height: 55px;", components: [
@@ -17,7 +18,6 @@ enyo.kind({
 			]},
 		{kind: "enyo.FittableRows", style: "background: url(assets/bg.png); min-width: 100%; max-width: 100%", components: [
 				{kind: "onyx.Toolbar", ontap: "toggleMenu", style: "background: transparent; height: 55px; border-style: hidden;", components: [
-						{kind: "enyo.Signals", onmenubutton: "toggleMenu"},
 						{kind: "onyx.IconButton", src: "assets/grabbutton.png"},
 						{kind: "enyo.Image", src: "assets/logo_lms124_32.png"}
 					]},
@@ -48,6 +48,7 @@ enyo.kind({
 	},
 	toggleMenu: function(inSender, inEvent) {
 		this.$.menuDrawer.setOpen(!this.$.menuDrawer.open);
+		return true;
 	},
 	showPanel: function(inSender, inEvent) {
 		// enyo.log("showPanel", inSender, inEvent);
