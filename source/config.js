@@ -10,21 +10,33 @@ var menuItemData = [
 		]
 	},
 	{
-		label: "Event",
+		label: "Events",
 		content: [
 			{kind: "slmc.Suite.Event"}
 		]
 	},
 	{
-		label: "Users",
+		label: "Articles",
 		content: [
-			{kind: "slmc.Suite.Users"}
+			{content: "slmc.Suite.Articles"}
+		]
+	},
+	{
+		label: "CarsDB",
+		content: [
+			{content: "slmc.Suite.CarsDB"}
 		]
 	},
 	{
 		label: "Forum",
 		content: [
 			{content: "slmc.Suite.Forum"}
+		]
+	},
+	{
+		label: "WWW",
+		content: [
+			{content: "<a href=\"http://www.slotracinglemans.com\">www.slotracinglemans.com</a>", allowHtml: true}
 		]
 	}
 ];
