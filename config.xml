@@ -3,7 +3,7 @@
   xmlns:gap = "http://phonegap.com/ns/1.0"
   id        = "com.gabe2001.slmc.suite"
   versionCode="1" 
-  version   = "0.0.1">
+  version   = "0.0.2">
    
   <name>slm.c Suite</name>
   
@@ -12,7 +12,7 @@
   </description>
   
   <author href="http://www.slotracinglemans.com" email="gabe.inabnit@gmail.com">
-    gabe
+    gabe, wkloppen
   </author>
 
   <feature name="android.permission.INTERNET" />
