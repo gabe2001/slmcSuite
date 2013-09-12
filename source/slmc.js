@@ -48,7 +48,7 @@ enyo.kind({
 	},
 	toggleMenu: function(inSender, inEvent) {
 		this.$.menuDrawer.setOpen(!this.$.menuDrawer.open);
-		return false;
+		return true;
 	},
 	showPanel: function(inSender, inEvent) {
 		// enyo.log("showPanel", inSender, inEvent);
