@@ -10,7 +10,9 @@ enyo.kind({
 		{kind: "enyo.Signals", onmenubutton: "toggleMenu"},
 		{kind: "onyx.Drawer", name: "menuDrawer", open: false, orient: "h", animated: false, components: [
 				{kind: "enyo.FittableRows", fit: true, components: [
+						
 						{kind: "onyx.Toolbar", ontap: "toggleMenu", classes: "menu", components: [
+								{kind: "Sound", name: "sound", src: "../assets/Effect_Tick.ogg", preload: "true"},
 								{kind: "enyo.Control", content: "Menu"}
 							]},
 						{kind: "enyo.FittableRows", name: "menuItems", ontap: "showPanel", fit: "true"}
@@ -48,6 +50,7 @@ enyo.kind({
 	},
 	toggleMenu: function(inSender, inEvent) {
 		this.$.menuDrawer.setOpen(!this.$.menuDrawer.open);
+		this.$.sound.play();
 		return true;
 	},
 	showPanel: function(inSender, inEvent) {
