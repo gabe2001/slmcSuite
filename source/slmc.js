@@ -12,7 +12,7 @@ enyo.kind({
 				{kind: "enyo.FittableRows", fit: true, components: [
 						
 						{kind: "onyx.Toolbar", ontap: "toggleMenu", classes: "menu", components: [
-								{kind: "Sound", name: "sound", src: "../assets/Effect_Tick.ogg", preload: "true"},
+								{kind: "Sound", name: "sound", src: "assets/Effect_Tick.ogg", preload: "true"},
 								{kind: "enyo.Control", content: "Menu"}
 							]},
 						{kind: "enyo.FittableRows", name: "menuItems", ontap: "showPanel", fit: "true"}
