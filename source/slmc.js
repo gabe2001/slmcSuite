@@ -8,20 +8,20 @@ enyo.kind({
 	menuLoaded: false,
 	components:[
 		{kind: "enyo.Signals", onmenubutton: "toggleMenu"},
-		{kind: "onyx.Drawer", name: "menuDrawer", open: false, orient: "h", animated: false, style: "background: grey", components: [
-				{kind: "enyo.FittableRows", fit: true, style: "width: 150px;", components: [
-						{kind: "onyx.Toolbar", ontap: "toggleMenu", style: "height: 55px;", components: [
-								{kind: "enyo.Control", content: "slm.c", style: "color: #CCDDFF;"}
+		{kind: "onyx.Drawer", name: "menuDrawer", open: false, orient: "h", animated: false, components: [
+				{kind: "enyo.FittableRows", fit: true, components: [
+						{kind: "onyx.Toolbar", ontap: "toggleMenu", classes: "menu", components: [
+								{kind: "enyo.Control", content: "Menu"}
 							]},
-						{kind: "enyo.FittableRows", name: "menuItems", ontap: "showPanel", fit: true}
+						{kind: "enyo.FittableRows", name: "menuItems", ontap: "showPanel", fit: "true"}
 					]}
 			]},
-		{kind: "enyo.FittableRows", style: "background: url(assets/bg.png); min-width: 100%; max-width: 100%", components: [
-				{kind: "onyx.Toolbar", ontap: "toggleMenu", style: "background: transparent; height: 55px; border-style: hidden;", components: [
-						{kind: "onyx.IconButton", src: "assets/grabbutton.png"},
+		{kind: "enyo.FittableRows", classes: "mainview", components: [
+				{kind: "onyx.Toolbar", ontap: "toggleMenu", classes: "toolbar", components: [
+						{kind: "onyx.IconButton", src: "assets/menutap.jpg"},
 						{kind: "enyo.Image", src: "assets/logo_lms124_32.png"}
 					]},
-				{kind: "enyo.FittableRows", fit: true, style: "padding: 1px 3px 3px 3px;", components: [
+				{kind: "enyo.FittableRows", fit: true, components: [
 						{kind: "enyo.Panels", name: "mainView", arrangerKind: "CardArranger", fit: true, draggable: false}
 					]}
 			]}
@@ -74,8 +74,8 @@ enyo.kind({
 		index: 0
 	},
 	components: [
-		{name: "menuItem", ontap: "showPanel", fit: true, style: "color: #CCDDFF; background: url(assets/menu-item.png); height: 55px;", components: [
-					{kind: "enyo.Control", name: "menuLabel", style: "padding-top: 17px; padding-left: 16px;"}
+		{name: "menuItem", ontap: "showPanel", fit: true, classes: "menuitem", components: [
+					{kind: "enyo.Control", name: "menuLabel"}
 				]}
 	],
 	create: function() {

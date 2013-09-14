@@ -3,10 +3,10 @@ enyo.kind({
 	kind: "enyo.FittableRows",
 	classes: "enyo-fit enyo-unselectable",
 	components: [
-		{name: "title", allowHtml: true, style: "font-weight: bold;"},
+		{name: "title", allowHtml: "true", classes: "pagetitle"},
 		{kind: "enyo.Panels", fit: true, dragable: false, components: [
 				{kind: "enyo.Scroller", touch: true, components: [
-						{name: "intro", allowHtml: true, style: "font-weight: normal; font-style: italic;"},
+						{name: "intro", allowHtml: "true"},
 						{name: "article", allowHtml: true}
 				]}
 			]}
