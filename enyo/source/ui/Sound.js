@@ -1,7 +1,7 @@
 enyo.kind({
         name: "enyo.Sound",
         kind: enyo.Component,
-        //* @protected
+        
         create: function() {
                 this.inherited(arguments);
                 this.srcChanged();
@@ -15,7 +15,7 @@ enyo.kind({
                         this.audio = new Audio();
                         this.audio.src = path;
                 }
-                //this.setAttribute("src", path);
+                  //this.setAttribute("src", path);
         },
         preloadChanged: function() {
                 //this.setAttribute("autobuffer", this.preload ? "autobuffer" : null);
@@ -24,7 +24,7 @@ enyo.kind({
         //* @public
         play: function() {
                 if (window.PhoneGap) {
-                        //new Media(this.src).play()
+                        new Media(this.src).play()
                         this.media.play();
                 } else {
                         if (!this.audio.paused) {
