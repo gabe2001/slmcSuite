@@ -15,7 +15,7 @@
     gabe, wkloppen
   </author>
 
-  <gap:plugin name="Media" value="org.apache.cordova.AudioHandler" />
+  <gap:plugin name="com.phonegap.plugins.childbrowser" version="4.2.1" />
 
   <feature name="android.permission.RECORD_AUDIO" />
   <feature name="android.permission.MODIFY_AUDIO_SETTINGS" />
