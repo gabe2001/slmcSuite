@@ -7,5 +7,6 @@ enyo.depends(
 	"Users.js",
 	"Home.js",
 	"config.js",
-	"util.js"
+	"util.js",
+	"Sound.js"
 );
