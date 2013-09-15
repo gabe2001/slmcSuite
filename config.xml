@@ -15,6 +15,11 @@
     gabe, wkloppen
   </author>
 
+  <plugin name="Media" value="org.apache.cordova.AudioHandler" />
+
+  <feature name="android.permission.RECORD_AUDIO" />
+  <feature name="android.permission.MODIFY_AUDIO_SETTINGS" />
+  <feature name="android.permission.WRITE_EXTERNAL_STORAGE" />
   <feature name="android.permission.INTERNET" />
 
   <preference name="orientation" value="default" />

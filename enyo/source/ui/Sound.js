@@ -1,10 +1,6 @@
 enyo.kind({
         name: "enyo.Sound",
         kind: enyo.Component,
-        published: {
-                src: "",
-                preload: true
-        },
         //* @protected
         create: function() {
                 this.inherited(arguments);
