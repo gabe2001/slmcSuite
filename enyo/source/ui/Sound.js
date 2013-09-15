@@ -24,7 +24,7 @@ enyo.kind({
         //* @public
         play: function() {
                 if (window.PhoneGap) {
-                        new Media(this.src).play()
+                        new Media(this.src).play();
                         this.media.play();
                 } else {
                         if (!this.audio.paused) {
