@@ -10,7 +10,7 @@ enyo.kind({
         srcChanged: function() {
                 var path = enyo.path.rewrite(this.src);
                 if (window.PhoneGap) {
-                        this.media = new Media("/system/media/audio/ui/Effect_Tick.ogg");
+                        this.media = new Media();
                 } else {
                         this.audio = new Audio();
                         this.audio.src = path;
