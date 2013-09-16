@@ -10,7 +10,7 @@ enyo.kind({
 		{kind: "enyo.Signals", onmenubutton: "toggleMenu"},
 		{kind: "onyx.Drawer", name: "menuDrawer", open: false, orient: "h", animated: false, components: [
 				{kind: "enyo.FittableRows", fit: true, components: [
-						{kind: "Sound", name: "sound", src: "file:///assets/tick.ogg", preload: "true"},
+						{kind: "Sound", name: "sound", src: "assets/tick.ogg", preload: "true"},
 						{kind: "onyx.Toolbar", ontap: "toggleMenu", classes: "menu", components: [
 								{kind: "enyo.Control", content: "Menu"}
 							]},
