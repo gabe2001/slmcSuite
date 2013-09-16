@@ -14,7 +14,8 @@
   <author href="http://www.slotracinglemans.com" email="gabe.inabnit@gmail.com">
     gabe, wkloppen
   </author>
-
+  
+  <gap:plugin name="Media" value="org.apache.cordova.AudioHandler" />
   <gap:plugin name="com.phonegap.plugins.childbrowser" version="4.2.1" />
   
 
