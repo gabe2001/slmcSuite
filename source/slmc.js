@@ -8,9 +8,9 @@ enyo.kind({
 	menuLoaded: false,
 	components:[
 		{kind: "enyo.Signals", onmenubutton: "toggleMenu"},
+		// {kind: "enyo.Audio", src: "assets/tick.ogg"},
 		{kind: "onyx.Drawer", name: "menuDrawer", open: false, orient: "h", animated: false, components: [
 				{kind: "enyo.FittableRows", fit: true, components: [
-						{kind: "enyo.Audio", src: "assets/tick.ogg"},
 						{kind: "onyx.Toolbar", ontap: "toggleMenu", classes: "menu", components: [
 								{kind: "enyo.Control", content: "Menu"}
 							]},
@@ -48,8 +48,8 @@ enyo.kind({
 		this.$.mainView.render();
 	},
 	toggleMenu: function(inSender, inEvent) {
+		// this.$.audio.play();
 		this.$.menuDrawer.setOpen(!this.$.menuDrawer.open);
-		this.$.audio.play();
 		return true;
 	},
 	showPanel: function(inSender, inEvent) {
