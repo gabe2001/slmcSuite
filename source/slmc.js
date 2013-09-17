@@ -10,7 +10,7 @@ enyo.kind({
 		{kind: "enyo.Signals", onmenubutton: "toggleMenu"},
 		{kind: "onyx.Drawer", name: "menuDrawer", open: false, orient: "h", animated: false, components: [
 				{kind: "enyo.FittableRows", fit: true, components: [
-						{kind: "Sound", name: "sound", src: "tick.ogg", preload: "true"},
+						{kind: "enyo.Audio", src: "assets/tick.ogg"},
 						{kind: "onyx.Toolbar", ontap: "toggleMenu", classes: "menu", components: [
 								{kind: "enyo.Control", content: "Menu"}
 							]},
@@ -49,7 +49,7 @@ enyo.kind({
 	},
 	toggleMenu: function(inSender, inEvent) {
 		this.$.menuDrawer.setOpen(!this.$.menuDrawer.open);
-		this.$.sound.play();
+		this.$.audio.play();
 		return true;
 	},
 	showPanel: function(inSender, inEvent) {
