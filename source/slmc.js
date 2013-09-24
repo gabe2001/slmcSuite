@@ -5,11 +5,11 @@
 enyo.kind({
 	name: "slmc.Suite",
 	kind: "enyo.FittableColumns",
-	menuLoaded: false,
+	// menuLoaded: false,
 	components:[
 		{kind: "enyo.Signals", onmenubutton: "toggleMenu"},
 		// {kind: "enyo.Audio", src: "assets/tick.ogg"},
-		{kind: "onyx.Drawer", name: "menuDrawer", open: false, orient: "h", animated: false, components: [
+		{kind: "onyx.Drawer", name: "menuDrawer", open: false, orient: "h", animated: false, classes: "drawer", components: [
 				{kind: "enyo.FittableRows", fit: true, components: [
 						{kind: "onyx.Toolbar", ontap: "toggleMenu", classes: "menu", components: [
 								{kind: "enyo.Control", content: "Menu"}
@@ -17,12 +17,12 @@ enyo.kind({
 						{kind: "enyo.FittableRows", name: "menuItems", ontap: "showPanel", fit: "true"}
 					]}
 			]},
-		{kind: "enyo.FittableRows", classes: "mainview", components: [
-				{kind: "onyx.Toolbar", ontap: "toggleMenu", classes: "toolbar", components: [
+		{kind: "enyo.FittableRows", classes: "screen", components: [
+				{kind: "onyx.Toolbar", ontap: "toggleMenu", classes: "toolbar screen", components: [
 						{kind: "onyx.IconButton", src: "assets/menutap.jpg"},
 						{kind: "enyo.Image", src: "assets/logo_lms124_32.png"}
 					]},
-				{kind: "enyo.FittableRows", fit: true, components: [
+				{kind: "enyo.FittableRows", classes: "mainview", fit: true, components: [
 						{kind: "enyo.Panels", name: "mainView", arrangerKind: "CardArranger", fit: true, draggable: false}
 					]}
 			]}

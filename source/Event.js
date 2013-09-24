@@ -1,12 +1,12 @@
 enyo.kind({
 	name: "slmc.Suite.Event",
 	kind: "FittableRows",
-	classes: "list-sample-contacts enyo-fit",
+	classes: "enyo-fit",
 	components: [
-		{kind: "List", classes: "list-sample-contacts-list enyo-unselectable", fit: true, multiSelect: false, onSetupItem: "setupItem", components: [
-				{name: "item", kind: "ContactItem", classes: "list-sample-contacts-item enyo-border-box", onRemove: "removeTap"}
+		{kind: "List", classes: "enyo-unselectable", fit: true, multiSelect: false, onSetupItem: "setupItem", components: [
+				{name: "item", kind: "ContactItem", classes: "enyo-border-box", onRemove: "removeTap"}
 			]},
-		{kind: "onyx.MoreToolbar", classes: "list-sample-contacts-list", layoutKind: "FittableColumnsLayout", style: "height: 55px;", components: [
+		{kind: "onyx.MoreToolbar", classes: "toolbar", layoutKind: "FittableColumnsLayout", components: [
 				{content: "2013 NL SA #4"},
 				{kind: "Button", content: "F", ontap: "sortDbByName"},
 				{kind: "Button", content: "C", ontap: "sortDbByEmail"},
