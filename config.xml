@@ -7,26 +7,11 @@
    
   <name>slm.c Suite</name>
   
-  <description>
-    slm.c apps suite 
-  </description>
+  <description>slm.c apps suite</description>
   
-  <author href="http://www.slotracinglemans.com" email="gabe.inabnit@gmail.com">
-    gabe, wkloppen
-  </author>
+  <author href="http://www.slotracinglemans.com" email="gabe.inabnit@gmail.com">gabe, wkloppen</author>
   
-  <!--
-  <gap:plugin name="com.phonegap.plugins.childbrowser" version="4.2.1" />
   
-  <feature name="http://api.phonegap.com/1.0/network"/>
-  <feature name="http://api.phonegap.com/1.0/media"/>
-  <feature name="http://api.phonegap.com/1.0/file"/>
-  <feature name="http://api.phonegap.com/1.0/notification"/>
-  -->
-  
-  <!-- feature name="android.permission.RECORD_AUDIO" / -->
-  <!-- feature name="android.permission.MODIFY_AUDIO_SETTINGS" / -->
-  <!-- feature name="android.permission.WRITE_EXTERNAL_STORAGE" / -->
   <feature name="android.permission.INTERNET" />
 
   <preference name="orientation" value="default" />
@@ -42,11 +27,12 @@
   <preference name="auto-hide-splash-screen" value="true" />
   <preference name="disable-cursor" value="false" />
   <preference name="android-minSdkVersion" value="7" />
+  <!-- Define app icon for each platform -->
   <preference name="android-installLocation" value="auto" />
 
   <icon src="icon.png" />
-  <icon gap:platform="webos" src="resources/icon-64.png" />
-    
+  <icon gap:platform="webos" src="resources/icon_64.png" />
+  <!-- Define app splash screen for each platform -->
   <gap:splash gap:platform="android" gap:density="ldpi" src="resources/splash.png" />
   <gap:splash gap:platform="android" gap:density="hdpi" src="resources/splash_480x800.png" />
   <gap:splash gap:platform="ios" width="320" height="480" src="resources/splash_iphone4.png" />
