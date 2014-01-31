@@ -15,6 +15,7 @@
     gabe, wkloppen
   </author>
   
+  <!-- Features -->
   <!--
   <gap:plugin name="com.phonegap.plugins.childbrowser" version="4.2.1" />
   
@@ -29,6 +30,8 @@
   <!-- feature name="android.permission.WRITE_EXTERNAL_STORAGE" / -->
   <feature name="android.permission.INTERNET" />
 
+  <!-- Preferences -->
+  <preference name="phonegap-version" value="2.9.0" />
   <preference name="orientation" value="default" />
   <!-- preference name="target-device" value="universal" / -->
   <preference name="fullscreen" value="false" />
